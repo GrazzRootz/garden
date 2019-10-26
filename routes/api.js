@@ -1,5 +1,7 @@
 const jwt = require('express-jwt');
 const jwksRsa = require('jwks-rsa');
+const { sendPlants } = require('../controllers/plantsController');
+const { sendGardens } = require('../controllers/gardensController');
 
 const authConfig = {
   domain: 'dev-112l54tu.eu.auth0.com',
@@ -27,5 +29,11 @@ apiRouter.route('/').get(checkJwt, (req, res) => {
     msg: 'Your Access Token was successfully validated!',
   });
 });
+
+apiRouter.route('/plants/:garden_uuid').get(sendPlants);
+
+apiRouter.route('/gardens').get(sendGardens);
+
+apiRouter.route('/equipment/:garden_uuid').get();
 
 module.exports = apiRouter;
