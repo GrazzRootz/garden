@@ -2,11 +2,12 @@ exports.up = function(connection) {
   return connection.schema.createTable('equipment', equipmentTable => {
     equipmentTable.string('equipment_name').primary();
     equipmentTable.integer('quantity');
-    equipmentTable.string('garden');
+    equipmentTable.integer('garden');
     equipmentTable
       .foreign('garden')
-      .references('garden_name')
-      .inTable('gardens');
+      .references('garden_id')
+      .inTable('gardens')
+      .onDelete('CASCADE');
   });
 };
 

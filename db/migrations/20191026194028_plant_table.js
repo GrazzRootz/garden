@@ -1,12 +1,14 @@
 exports.up = function(connection) {
   return connection.schema.createTable('plants', plantsTable => {
-    plantsTable.string('plant_name').primary();
+    plantsTable.increments('plant_id').primary();
+    plantsTable.string('plant_name');
     plantsTable.integer('quantity');
-    plantsTable.string('garden');
+    plantsTable.integer('garden');
     plantsTable
       .foreign('garden')
-      .references('garden_name')
-      .inTable('gardens');
+      .references('garden_id')
+      .inTable('gardens')
+      .onDelete('CASCADE');
   });
 };
 

@@ -1,8 +1,9 @@
 exports.up = function(connection) {
   return connection.schema.createTable('gardens', gardensTable => {
-    gardensTable.uuid('garden_uuid');
-    gardensTable.string('garden_name').primary();
+    gardensTable.increments('garden_id').primary();
+    gardensTable.string('garden_name');
     gardensTable.string('soil_ph');
+    gardensTable.boolean('guerilla');
   });
 };
 
