@@ -30,7 +30,7 @@ apiRouter.route('/').get(checkJwt, (req, res) => {
   });
 });
 
-apiRouter.route('/plants/:garden_uuid').get(sendPlants);
+apiRouter.route('/plants/:garden_id').get(sendPlants);
 
 apiRouter.route('/gardens').get(sendGardens);
 

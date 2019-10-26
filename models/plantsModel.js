@@ -1,14 +1,12 @@
 const connection = require('../db/connection');
 
 const fetchPlantsByGarden = query => {
-  const { garden } = query;
+  const { garden_id } = query;
 
   return connection
     .select('*')
     .from('plants')
-    .modify(plantQuery => {
-      plantQuery.where('gardens.garden_name', '=', garden);
-    });
+    .where('plants.garden', '=', garden_id);
 };
 
 module.exports = { fetchPlantsByGarden };
