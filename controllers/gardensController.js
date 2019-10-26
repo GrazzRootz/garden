@@ -1,10 +1,13 @@
-const { fetchGardens } = require('../models/gardensModel');
+const { fetchGardens, postGarden } = require('../models/gardensModel');
 
 const sendGardens = (req, res, next) => {
-  console.log(req);
   fetchGardens(req.params).then(gardens => {
     res.status(200).send({ gardens });
   });
 };
 
-module.exports = { sendGardens };
+const addGarden = (req, res, next) => {
+  postGarden(req.body).then(([garden]) => res.status(200).send({ garden }));
+};
+
+module.exports = { sendGardens, addGarden };

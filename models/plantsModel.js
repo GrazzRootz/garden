@@ -9,4 +9,15 @@ const fetchPlantsByGarden = query => {
     .where('plants.garden', '=', garden_id);
 };
 
-module.exports = { fetchPlantsByGarden };
+const plantInGarden = req => {
+  const { plant_name, quantity, garden } = req;
+
+  const plantObj = { plant_name, quantity, garden };
+
+  return connection
+    .insert(plantObj)
+    .into('plants')
+    .returning('*');
+};
+
+module.exports = { fetchPlantsByGarden, plantInGarden };
