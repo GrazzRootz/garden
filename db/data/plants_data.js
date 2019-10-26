@@ -15,8 +15,18 @@ module.exports = [
     garden: 3,
   },
   {
-    plant_name: 'Turnips',
-    quantity: 12,
+    plant_name: 'Apple Tree',
+    quantity: 2,
     garden: 1,
+  },
+  {
+    plant_name: 'Tulips',
+    quantity: 20,
+    garden: 2,
+  },
+  {
+    plant_name: 'Potato',
+    quantity: 16,
+    garden: 5,
   },
 ];
