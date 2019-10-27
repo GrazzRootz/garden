@@ -7,7 +7,9 @@ const sendEquipment = (req, res, next) => {
 };
 
 const addEquipment = (req, res, next) => {
-  plantInGarden(req.body).then(([equipment]) => res.status(201).send(plant));
+  plantInGarden(req.body).then(([equipment]) =>
+    res.status(201).send(equipment),
+  );
 };
 
 module.exports = { sendEquipment, addEquipment };

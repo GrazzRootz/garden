@@ -4,6 +4,8 @@ exports.up = function(connection) {
     gardensTable.string('garden_name');
     gardensTable.string('soil_ph');
     gardensTable.boolean('guerilla');
+    gardensTable.decimal('latitude', 4);
+    gardensTable.decimal('longitude', 4);
   });
 };
 

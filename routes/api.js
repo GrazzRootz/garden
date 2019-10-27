@@ -2,7 +2,10 @@ const jwt = require('express-jwt');
 const jwksRsa = require('jwks-rsa');
 const { sendPlants, addPlant } = require('../controllers/plantsController');
 const { sendGardens, addGarden } = require('../controllers/gardensController');
-const { sendEquipment } = require('../controllers/equipmentController');
+const {
+  sendEquipment,
+  addEquipment,
+} = require('../controllers/equipmentController');
 
 const authConfig = {
   domain: 'dev-112l54tu.eu.auth0.com',
@@ -41,6 +44,9 @@ apiRouter
   .get(sendGardens)
   .post(addGarden);
 
-apiRouter.route('/equipment/:garden_id').get(sendEquipment);
+apiRouter
+  .route('/equipment/:garden_id')
+  .get(sendEquipment)
+  .post(addEquipment);
 
 module.exports = apiRouter;
